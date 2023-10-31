@@ -1,12 +1,13 @@
 .title{
     text-align: center;
-    color:rgb(16, 210, 165);
+    color:rgb(10, 55, 44);
     font-size: 60px;
 }
 
 body{
-    background-color:rgb(10, 10, 9);
+    background: linear-gradient(100deg,white,#c1f0ff);
 }
+
 
 .container-card{
     transition: 0.3s;
@@ -17,6 +18,8 @@ body{
 .container{
     width: 500px;
     margin: 20px auto;
+    display: flex;
+    flex-direction: column;
     
 }
 .form{
@@ -35,14 +38,22 @@ body{
 
 .add{
     color:whitesmoke;
-    background-color:rgb(93, 233, 6);
+    background: hsl(345deg 100% 47%);
     border-radius: 12px;
     height: 45px;
-    width: 75px;
+    width: 80px;
     font-weight: bolder;
     cursor: grab;
     border: none;
+    font-size: 1.1rem;
+    will-change: transform;
+    transform: translateY(-4px);
+    transition:
+      transform
+      600ms
+      cubic-bezier(.3, .7, .4, 1);
 }
+
 #type_task{
     line-height: 32px;
     border-radius: 6px;
@@ -55,12 +66,16 @@ body{
     outline: none;
 }
 
-/* Style for each task card */
-/* Style for each task card */
 .task {
-    display: inline-block;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
+   /* display: grid;
+    grid-template-columns: auto auto auto; /* You can adjust the number of columns as needed 
+    display: flex;
+    flex-direction: column;*/
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px; /* Adjust the gap between grid items */
+    background-color: #c1f0ff;
+    border: 1.5px solid #c1f0ff;
     border-radius: 5px;
     padding: 10px;
     margin: 5px;
@@ -69,17 +84,30 @@ body{
 }
 
 
-/* Alternate style for cards */
-.task:nth-child(odd) {
-    background-color: #e1e1e1;
-    /* Additional styles for odd numbered cards */
+/* Alternate style for cards 
+.task.task:nth-child(n) {
+    background-color: #cfebf5;
 }
+    /* Additional styles for odd numbered cards */
+
+ /* .task.task:nth-child(4n-n) {
+    background-color: #62f5ff;
+    /* Additional styles for odd numbered cards 
+} */
+.task.task:nth-child(3n-2) {
+    background-color: #ffffff;
+    border: 1.5px solid #ffff;
+    /* Additional styles for odd numbered cards */
+} 
 
 /* Floating style for the tasks */
 #tasks {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    /*flex-wrap: nowrap;
     justify-content: space-around; /* To space cards evenly in the container */
+
+    grid-template-columns: repeat(auto-fill,minmax(167px, 1fr));
+    
 }
 
 
@@ -90,26 +118,26 @@ body{
     text-align: center;
     font-size: 14px;
     color:whitesmoke;
-    background-color: #f44336;
+    background-color: #070707;
     margin-top: 20px;
     cursor: grab;
     border-radius: 4px;
 }
 .task {
     position: relative;
-    padding-right: 30px; /* To create space for the delete button */
+    padding-right: 30px; /* To create space for the delete button 
+    display: flexbox;*/
 }
 
 .del {
     position: absolute;
-    top: 5px;
+    top: 7px;
     right: 5px;
     background: none;
     border: none;
     cursor: pointer;
 
 }
-
 
 
 

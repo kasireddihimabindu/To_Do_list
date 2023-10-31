@@ -163,7 +163,7 @@ window.onload = function () {
 
             let span = document.createElement("button"); // Create a delete button
             span.className = "del"; // Assign the class for styling
-            span.appendChild(document.createTextNode("🗑")); // Add the delete icon
+            span.appendChild(document.createTextNode("❌")); // Add the delete icon
             div.appendChild(span); // Add the delete button to the task container
 
             tasksDiv.appendChild(div); // Add the task container to the tasks container
