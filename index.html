@@ -8,11 +8,17 @@
     <script src='app.js'></script>
 </head>
 <body>
-    <h1> ToDo List</h1>
-    <div class="add_task">
-        <form>
-             <input type="text" id="type_task" placeholder="Add your task"> &nbsp; <input type="submit" id="add" value="Add">
-        </form>
+    <h1 class="title">ToDo List </h1>
+    <div class="container">
+        <div class="form">
+             <input type="text" id="type_task" placeholder="Add your task" size="30"> &nbsp; 
+             <input type="submit" class="add" id="add" value="Add"> 
+        </div>
+        <br>
+        <br>
+        <div class="tasks" id="tasks"></div>
+        <button class="delete_all">Delete All</button>
     </div>
+
 </body>
 </html>
