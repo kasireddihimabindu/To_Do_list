@@ -1,4 +1,5 @@
- /*window.onload = function(){ 
+ /* OLD Code with errors
+ window.onload = function(){ 
 let txtbox = document.getElementById ("type_task");
 let addbtn = document.getElementById("add");
 let tasksDiv = document.getElementById("tasks");
@@ -113,25 +114,39 @@ deleteAll.onclick=function(e) {
 }
 }
 */
+/*New Code*/
+
 window.onload = function () {
-    // Retrieve elements from the DOM
+    // Retrieving DOM elements
     let txtbox = document.getElementById("type_task"); // Input field for task text
     let addbtn = document.getElementById("add"); // Button to add a task
     let tasksDiv = document.getElementById("tasks"); // Container for tasks
     let deleteAll = document.querySelector(".delete_all"); // Button to delete all tasks
     let arrayOfTasks = []; // Array to store tasks
 
-    // Load tasks from local storage, if available
+    // Loading tasks from local storage, if available
     if (window.localStorage.getItem("tasks")) {
         arrayOfTasks = JSON.parse(window.localStorage.getItem("tasks"));
         addTaskToPage(arrayOfTasks);
     }
 
+    // Function to enable or disable the Delete All button based on task count
+    function updateDeleteAllButton() {
+        if (arrayOfTasks.length >= 2) {
+            deleteAll.disabled = false; // Enable the button if there are 2 or more tasks
+        } else {
+            deleteAll.disabled = true; // Disable the button if there are less than 2 tasks
+        }
+    }
+
+    updateDeleteAllButton(); // Initial check to set the button state
+
     // Event listener for adding a new task
     addbtn.onclick = function () {
         if (txtbox.value !== "") {
             addTaskToArray(txtbox.value);
-            txtbox.value = ""; // Clear the input field after adding a task
+            txtbox.value = "";
+            updateDeleteAllButton(); // Check after adding a task
         }
     };
 
@@ -168,6 +183,7 @@ window.onload = function () {
 
             tasksDiv.appendChild(div); // Add the task container to the tasks container
         });
+        updateDeleteAllButton(); // Check after updating the tasks
     }
 
     // Function to update tasks in local storage
@@ -182,6 +198,7 @@ window.onload = function () {
             arrayOfTasks = arrayOfTasks.filter(task => task.id != taskId); // Remove the task from the array
             addTaskToPage(arrayOfTasks); // Update the displayed tasks
             addTaskToLocalStorage(arrayOfTasks); // Update tasks in local storage
+            updateDeleteAllButton(); // Check after removing a task
         } else if (e.target.classList.contains("task")) {
             let taskId = e.target.getAttribute("data-id");
             arrayOfTasks = arrayOfTasks.map(task => {
@@ -200,6 +217,6 @@ window.onload = function () {
         tasksDiv.innerHTML = ""; // Clear the displayed tasks
         arrayOfTasks = []; // Clear the tasks array
         window.localStorage.removeItem("tasks"); // Remove tasks from local storage
+        updateDeleteAllButton(); // Check after deleting all tasks
     };
 };
-
