@@ -136,8 +136,14 @@ body{
     background: none;
     border: none;
     cursor: pointer;
-
 }
 
+/* Add this style to your CSS */
+.delete_all[disabled] {
+    cursor: not-allowed;
+}
 
+.delete_all[disabled]:hover {
+    background-color: rgb(63, 62, 62);
+}
 

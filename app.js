@@ -15,11 +15,30 @@ window.onload = function () {
     // Function to enable or disable the Delete All button based on task count
     function updateDeleteAllButton() {
         if (arrayOfTasks.length >= 2) {
-            deleteAll.disabled = false; // Enable the button if there are 2 or more tasks
+           deleteAll.disabled = false; // Enable the button if there are 2 or more tasks
         } else {
-            deleteAll.disabled = true; // Disable the button if there are less than 2 tasks
+           deleteAll.disabled = true; // Disable the button if there are less than 2 tasks
+            
         }
     }
+  
+    // Event listener for adding a new task when Enter key is pressed
+    txtbox.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            e.preventDefault(); // Prevent the default behavior of the Enter key (form submission)
+            addTaskOnEnter();
+        }
+    });
+
+    // Function to add a new task when Enter key is pressed
+    function addTaskOnEnter() {
+        if (txtbox.value !== "") {
+            addTaskToArray(txtbox.value);
+            txtbox.value = "";
+            updateDeleteAllButton(); // Check after adding a task
+        }
+    }
+
 
     updateDeleteAllButton(); // Initial check to set the button state
 
